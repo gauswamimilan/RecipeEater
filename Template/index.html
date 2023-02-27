@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <title>Home - Recipe Eater</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="assets/fonts/fontawesome-all.min.css">
+    <link rel="stylesheet" href="assets/css/styles.min.css">
+</head>
+
+<body>
+    <header class="text-center text-white">
+        <div class="overlay"></div>
+        <div id="speak_text"></div>
+        <div class="container">
+            <div class="row">
+                <div class="col-xl-9 mx-auto position-relative">
+                    <h1 class="mb-5" style="color: black;margin-top: 3rem;">Recipe Eater</h1>
+                    <p
+                        style="color: black;text-align: left;padding-left: 79px;padding-right: 148px;margin-top: 15px;margin-bottom: 8px;">
+                        You can try following things to navigate entire recipe
+
+                    <ul style="color: black;text-align: left;">
+                        <li>what is number of servings?</li>
+                        <li>What are ingredients?</li>
+                        <li>change to pumpkin crumb cake recipe</li>
+                        <li>how much pumpkin puree do i need?</li>
+                        <li>what is next step after preheating oven?</li>
+                    </ul>
+                    </p>
+                </div>
+                <div class="col-md-10 col-lg-8 col-xl-7 mx-auto position-relative">
+                    <div class="row">
+                        <div class="col-12 col-md-9 mb-2 mb-md-0"><input class="form-control form-control-lg"
+                                id="text_input" type="text" placeholder="Type Here....."></div>
+                        <div class="col-12 col-md-3"><button class="btn btn-primary btn-lg" type="button"
+                                id="enter_button" style="margin-right: 14px;"><i
+                                    class="far fa-paper-plane"></i></button><button id="mic_button"
+                                class="btn btn-primary btn-lg" type="button"><i class="fas fa-microphone"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    <div class="container" id="chat_history">
+    </div>
+    <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="assets/js/jquery.min.js"></script>
+    <script src="assets/js/javascript_functions.js"></script>
+    <script>
+        const unique_id = "{{unique_id}}";
+        const base_url = "/";
+        
+        window.addEventListener('load', function () {
+            $("#speak_text").click(request_data("select_recipe"));
+            $("#speak_text").click();
+        })
+
+        $("#text_input").keydown(function (event) {
+            var id = event.which || event.keyCode || event.key || 0;
+            if (id == 13) {
+                $('#enter_button').trigger('click');
+            }
+        });
+        $("#enter_button").click(request_data);
+        $("#mic_button").click(start_speech);
+    </script>
+</body>
+
+</html>
