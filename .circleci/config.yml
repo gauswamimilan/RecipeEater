@@ -40,7 +40,7 @@ jobs:
       - run:
           name: deploy docker image
           command: |
-            ssh $SSH_USER@$SSH_HOST "sudo docker run -d --name recipe_eater -e mongodb_url=${mongodb_url} -p 127.0.0.1:20001:80 ${CLOUD_CANISTER_URL}:latest"
+            ssh $SSH_USER@$SSH_HOST "sudo docker run -d --name recipe_eater -e mongodb_url=${mongodb_url} -p 127.0.0.1:20001:80 --restart unless-stopped ${CLOUD_CANISTER_URL}:latest"
 
 
 workflows:
